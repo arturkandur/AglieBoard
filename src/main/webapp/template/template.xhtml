@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+<f:view contentType="text/html" id="fview">
+    <h:outputStylesheet name="css/style.css" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>AgileBoard</title>
+    <ui:debug />
+
+    <f:metadata>
+        <ui:insert name="metadata" />
+    </f:metadata>
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+
+        <p:layout fullPage="true" resizeTitle="resize" style="background-color:orange">
+
+            <p:layoutUnit position="west" id="west" resizable="false" header="AgileBoard" style="height:580px;overflow:hidden;" size="225">
+                <ui:include src="menu.xhtml" />
+            </p:layoutUnit>
+
+            <p:layoutUnit styleClass="layoutUnitCenter"	position="center">
+
+                    <ui:insert name="content" />
+
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+
+</f:view>
+</html>

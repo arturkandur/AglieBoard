@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+
+        <h:form id="form">
+
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="4">
+
+                <h:outputText value="Name:" style="font-weight: bold"/>
+                <h:inputText value="#{taskController.currentTask.name}" id="name" required="true" />
+
+                <h:outputText value="Description:" style="font-weight: bold"/>
+                <h:inputText value="#{taskController.currentTask.description}" id="description"/>
+
+                <h:outputText value="Status:" style="font-weight: bold"/>
+                <p:selectOneMenu value="#{taskController.currentTask.status}">
+
+                    <f:selectItem itemLabel="TODO" itemValue="TODO" />
+                    <f:selectItem itemLabel="INPROGRESS" itemValue="INPROGRESS" />
+                    <f:selectItem itemLabel="ON QA" itemValue="ON QA" />
+                    <f:selectItem itemLabel="DONE" itemValue="DONE" />
+                </p:selectOneMenu>
+
+                <h:outputText value="Assignee:" style="font-weight: bold"/>
+                <p:selectOneMenu value="#{taskController.currentTask.assignee}" converter="user">
+                    <f:selectItems value="#{dashboardController.userList}" var="user" itemLabel="#{user.name}" itemValue="#{user}"/>
+                </p:selectOneMenu>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Add Task" update="form" action="mainPage" actionListener="#{taskController.addTask}"/>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

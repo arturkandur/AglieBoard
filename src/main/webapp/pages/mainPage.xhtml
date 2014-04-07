@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+
+        <h:form id="form">
+            <p:dataTable id="taskTable" var="user" value="#{dashboardController.userList}">
+
+                <f:facet name="header">
+                    Tasks
+                </f:facet>
+
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column headerText="TODO" />
+                        <p:column headerText="INPROGRESS" />
+                        <p:column headerText="ON QA" />
+                        <p:column headerText="DONE" />
+                    </p:row>
+
+                </p:columnGroup>
+
+                <p:subTable var="task" value="#{user.taskList}">
+                    <f:facet name="header">
+                        #{user.name}
+                    </f:facet>
+
+                    <p:column>
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'TODO'}">
+                            <f:setPropertyActionListener value="#{task}"
+                                                         target="#{taskController.currentTask}"/>
+                        </h:commandLink>
+                    </p:column>
+
+                    <p:column>
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'INPROGRESS'}">
+                            <f:setPropertyActionListener value="#{task}"
+                                                         target="#{taskController.currentTask}"/>
+                        </h:commandLink>
+                    </p:column>
+
+                    <p:column>
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'ON QA'}">
+                            <f:setPropertyActionListener value="#{task}"
+                                                         target="#{taskController.currentTask}"/>
+                        </h:commandLink>
+                    </p:column>
+
+                    <p:column>
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'DONE'}">
+                            <f:setPropertyActionListener value="#{task}"
+                                                         target="#{taskController.currentTask}"/>
+                        </h:commandLink>
+                    </p:column>
+
+                </p:subTable>
+            </p:dataTable>
+
+            <p:commandButton value="Add Task" action="taskNewContent" update="form">
+                <f:setPropertyActionListener value="#{dashboardController.newTask}"
+                                             target="#{taskController.currentTask}"/>
+            </p:commandButton>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
