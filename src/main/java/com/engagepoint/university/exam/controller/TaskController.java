@@ -3,6 +3,7 @@ package com.engagepoint.university.exam.controller;
 import com.engagepoint.university.exam.dao.TaskDao;
 import com.engagepoint.university.exam.dao.UserDao;
 import com.engagepoint.university.exam.entity.Task;
+import com.engagepoint.university.exam.entity.TaskStatus;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -17,7 +18,7 @@ public class TaskController implements Serializable{
 
     private Task currentTask;
 
-    private List<String> statusList;
+    private List<TaskStatus> statusList;
 
     @Inject
     private UserDao userDao;
@@ -34,7 +35,7 @@ public class TaskController implements Serializable{
         this.currentTask = currentTask;
     }
 
-    public List<String> getStatusList() {
+    public List<TaskStatus> getStatusList() {
         return statusList;
     }
 

@@ -2,6 +2,7 @@ package com.engagepoint.university.exam.repository;
 
 
 import com.engagepoint.university.exam.entity.Task;
+import com.engagepoint.university.exam.entity.TaskStatus;
 import com.engagepoint.university.exam.entity.User;
 import com.engagepoint.university.exam.util.TaskGenerator;
 import com.engagepoint.university.exam.util.UserGenerator;
@@ -45,19 +46,19 @@ public class DataRepository implements Serializable{
         userList = UserGenerator.getRandomUserList();
 
         Task task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_DONE);
+        task.setStatus(TaskStatus.DONE);
         task.setAssignee(userList.get(0));
         taskList.add(task);
         tempList.add(task);
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_TODO);
+        task.setStatus(TaskStatus.TODO);
         task.setAssignee(userList.get(0));
         taskList.add(task);
         tempList.add(task);
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_DONE);
+        task.setStatus(TaskStatus.DONE);
         task.setAssignee(userList.get(0));
         taskList.add(task);
         tempList.add(task);
@@ -66,13 +67,13 @@ public class DataRepository implements Serializable{
         tempList = new ArrayList<Task>();
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_INPROGRESS);
+        task.setStatus(TaskStatus.IN_PROGRESS);
         task.setAssignee(userList.get(1));
         taskList.add(task);
         tempList.add(task);
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_INPROGRESS);
+        task.setStatus(TaskStatus.IN_PROGRESS);
         task.setAssignee(userList.get(1));
         taskList.add(task);
         tempList.add(task);
@@ -81,19 +82,19 @@ public class DataRepository implements Serializable{
         tempList = new ArrayList<Task>();
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_TODO);
+        task.setStatus(TaskStatus.TODO);
         task.setAssignee(userList.get(2));
         taskList.add(task);
         tempList.add(task);
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_DONE);
+        task.setStatus(TaskStatus.DONE);
         task.setAssignee(userList.get(2));
         taskList.add(task);
         tempList.add(task);
 
         task = TaskGenerator.genTask();
-        task.setStatus(Task.STATUS_TODO);
+        task.setStatus(TaskStatus.TODO);
         task.setAssignee(userList.get(2));
         taskList.add(task);
         tempList.add(task);

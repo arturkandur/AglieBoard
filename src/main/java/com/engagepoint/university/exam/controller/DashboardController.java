@@ -3,6 +3,7 @@ package com.engagepoint.university.exam.controller;
 import com.engagepoint.university.exam.dao.TaskDao;
 import com.engagepoint.university.exam.dao.UserDao;
 import com.engagepoint.university.exam.entity.Task;
+import com.engagepoint.university.exam.entity.TaskStatus;
 import com.engagepoint.university.exam.entity.User;
 
 import javax.annotation.PostConstruct;
@@ -46,7 +47,6 @@ public class DashboardController implements Serializable {
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
     }
-
     @PostConstruct
     public void init() {
         taskList = taskDao.getAll();
@@ -59,7 +59,7 @@ public class DashboardController implements Serializable {
 
     public Task getNewTask() {
         newTask = new Task();
-        newTask.setStatus(Task.STATUS_TODO);
+        newTask.setStatus(TaskStatus.TODO);
         newTask.setDescription("");
         newTask.setName("");
 

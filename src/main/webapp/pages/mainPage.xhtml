@@ -18,7 +18,7 @@
                 <p:columnGroup type="header">
                     <p:row>
                         <p:column headerText="TODO" />
-                        <p:column headerText="INPROGRESS" />
+                        <p:column headerText="IN PROGRESS" />
                         <p:column headerText="ON QA" />
                         <p:column headerText="DONE" />
                     </p:row>
@@ -31,28 +31,28 @@
                     </f:facet>
 
                     <p:column>
-                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'TODO'}">
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{task.status eq 'TODO'}">
                             <f:setPropertyActionListener value="#{task}"
                                                          target="#{taskController.currentTask}"/>
                         </h:commandLink>
                     </p:column>
 
                     <p:column>
-                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'INPROGRESS'}">
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{task.status eq 'IN_PROGRESS'}">
                             <f:setPropertyActionListener value="#{task}"
                                                          target="#{taskController.currentTask}"/>
                         </h:commandLink>
                     </p:column>
 
                     <p:column>
-                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'ON QA'}">
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{task.status eq 'ON_QA'}">
                             <f:setPropertyActionListener value="#{task}"
                                                          target="#{taskController.currentTask}"/>
                         </h:commandLink>
                     </p:column>
 
                     <p:column>
-                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{user eq task.assignee and task.status eq 'DONE'}">
+                        <h:commandLink value="#{task.name}" action="taskContent" rendered="#{task.status eq 'DONE'}">
                             <f:setPropertyActionListener value="#{task}"
                                                          target="#{taskController.currentTask}"/>
                         </h:commandLink>
@@ -62,6 +62,10 @@
             </p:dataTable>
 
             <p:commandButton value="Add Task" action="taskNewContent" update="form">
+                <f:setPropertyActionListener value="#{dashboardController.newTask}"
+                                             target="#{taskController.currentTask}"/>
+            </p:commandButton>
+            <p:commandButton value="Add User" action="addNewContent" update="form">
                 <f:setPropertyActionListener value="#{dashboardController.newTask}"
                                              target="#{taskController.currentTask}"/>
             </p:commandButton>

@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task {
-    public static final String STATUS_TODO = "TODO";
-    public static final String STATUS_INPROGRESS = "INPROGRESS";
-    public static final String STATUS_ON_QA = "ON QA";
-    public static final String STATUS_DONE = "DONE";
 
     private String name;
     private String description;
-    private String status;
+    private TaskStatus status;
     private User assignee;
 
     public String getDescription() {
@@ -30,11 +26,11 @@ public class Task {
         this.name = name;
     }
 
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 
@@ -46,12 +42,13 @@ public class Task {
         this.assignee = assignee;
     }
 
-    public static List<String> getStatusList(){
-        List<String> statusList = new ArrayList<String>();
-        statusList.add(STATUS_TODO);
-        statusList.add(STATUS_INPROGRESS);
-        statusList.add(STATUS_ON_QA);
-        statusList.add(STATUS_DONE);
+    public static List<TaskStatus> getStatusList(){
+        List<TaskStatus> statusList = new ArrayList<TaskStatus>();
+        statusList.add(TaskStatus.TODO);
+        statusList.add(TaskStatus.IN_PROGRESS);
+        statusList.add(TaskStatus.ON_QA);
+        statusList.add(TaskStatus.DONE);
         return statusList;
     }
 }
+
