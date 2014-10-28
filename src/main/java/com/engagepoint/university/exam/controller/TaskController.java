@@ -14,7 +14,7 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class TaskController implements Serializable{
+public class TaskController implements Serializable {
 
     private Task currentTask;
 
@@ -26,8 +26,7 @@ public class TaskController implements Serializable{
     @Inject
     private TaskDao taskDao;
 
-    public Task getCurrentTask()
-    {
+    public Task getCurrentTask() {
         return currentTask;
     }
 
@@ -51,7 +50,6 @@ public class TaskController implements Serializable{
     public void addTask() {
         taskDao.save(currentTask);
     }
-
 
 
 }

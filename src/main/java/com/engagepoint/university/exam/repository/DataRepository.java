@@ -12,7 +12,6 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -40,10 +39,18 @@ public class DataRepository implements Serializable{
         this.taskList = taskList;
     }
 
+    private void generateUnassignedUser() {
+        User newUser = new User();
+        newUser.setName("Unassigned");
+        newUser.setId((long) userList.size());
+        userList.add(newUser);
+    }
+
     @PostConstruct
     public void initList(){
         List<Task> tempList = new ArrayList<Task>();
         userList = UserGenerator.getRandomUserList();
+        generateUnassignedUser();
 
         Task task = TaskGenerator.genTask();
         task.setStatus(TaskStatus.DONE);

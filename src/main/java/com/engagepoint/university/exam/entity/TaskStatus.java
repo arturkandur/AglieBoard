@@ -19,9 +19,6 @@ public enum TaskStatus {
         this.status = status;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Enum#toString()
-     */
     @Override
     public String toString() {
         return status;

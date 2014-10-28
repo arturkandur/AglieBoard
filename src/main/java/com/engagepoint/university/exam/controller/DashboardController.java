@@ -11,7 +11,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -22,6 +21,16 @@ public class DashboardController implements Serializable {
     private Task newTask;
 
     private List<Task> taskList;
+
+    public List<ColumnModel> getColumns() {
+        return columns;
+    }
+
+    public void setColumns(List<ColumnModel> columns) {
+        this.columns = columns;
+    }
+
+    private List<ColumnModel> columns;
 
     @Inject
     private TaskDao taskDao;
@@ -47,6 +56,7 @@ public class DashboardController implements Serializable {
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
     }
+
     @PostConstruct
     public void init() {
         taskList = taskDao.getAll();
@@ -65,7 +75,6 @@ public class DashboardController implements Serializable {
 
         return newTask;
     }
-
 
 
 }

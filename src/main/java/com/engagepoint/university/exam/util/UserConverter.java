@@ -1,10 +1,9 @@
 package com.engagepoint.university.exam.util;
 
 
-import com.engagepoint.university.exam.dao.UserDao;
+import com.engagepoint.university.exam.dao.impl.UserDaoImpl;
 import com.engagepoint.university.exam.entity.User;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -12,7 +11,6 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 @FacesConverter(value="user")
@@ -21,7 +19,7 @@ public class UserConverter implements Converter {
     private List<User> userList;
 
     @Inject
-    UserDao userDao;
+    UserDaoImpl userDao;
 
     public Object getAsObject(FacesContext facesContext, UIComponent component, String submittedValue) {
         userList = userDao.getAll();

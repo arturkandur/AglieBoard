@@ -42,8 +42,8 @@ public class Task {
         this.assignee = assignee;
     }
 
-    public static List<TaskStatus> getStatusList(){
-        List<TaskStatus> statusList = new ArrayList<TaskStatus>();
+    public static List<TaskStatus> getStatusList() {
+        List<TaskStatus> statusList = new ArrayList<>();
         statusList.add(TaskStatus.TODO);
         statusList.add(TaskStatus.IN_PROGRESS);
         statusList.add(TaskStatus.ON_QA);
